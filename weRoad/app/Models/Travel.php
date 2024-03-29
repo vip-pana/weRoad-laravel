@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Travel extends Model
 {
     use HasFactory, HasUuids;
+
+    protected $table = 'travels';
 }
