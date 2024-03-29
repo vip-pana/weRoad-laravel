@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('travels', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->boolean('isPublic');
-            $table->string('image')->nullable();
+            $table->string('slug');
             $table->string('name');
             $table->longText('description');
             $table->integer('numberOfDays');
-            $table->integer('numberOfNights');
-            // $table->json('moods'); DA GESTIRE
+            $table->json('moods');
+            $table->boolean('isPublic')->default(false);
             $table->timestamps();
         });
     }
