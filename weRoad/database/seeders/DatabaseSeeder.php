@@ -18,14 +18,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->seedTravels();
         $this->seedTours();
         $this->seedRoles();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'roleId' => 'baf18948-721e-49f5-aa7f-bed1a5415cb6' // ADMIN
+        ]);
     }
 
     private function seedTravels(): void
