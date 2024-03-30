@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\User;
+use App\UserRole;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,12 +20,23 @@ class DatabaseSeeder extends Seeder
 
         $this->seedTravels();
         $this->seedTours();
-        $this->seedRoles();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'roleId' => 'baf18948-721e-49f5-aa7f-bed1a5415cb6' // ADMIN
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'role' => UserRole::ADMIN
+        ]);
+
+        User::factory()->create([
+            'name' => 'Editor',
+            'email' => 'editor@gmail.com',
+            'role' => UserRole::EDITOR
+        ]);
+
+        User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@gmail.com',
+            'role' => UserRole::USER
         ]);
     }
 
@@ -137,24 +148,6 @@ class DatabaseSeeder extends Seeder
 
         foreach ($tours as $tour) {
             Tour::create($tour);
-        }
-    }
-
-    private function seedRoles(): void
-    {
-        $roles = [
-            [
-                'id' => 'baf18948-721e-49f5-aa7f-bed1a5415cb6',
-                'name' => 'admin',
-            ],
-            [
-                'id' => '9442703c-dd4f-4e36-9554-a60574c408be',
-                'name' => 'editor',
-            ],
-        ];
-
-        foreach ($roles as $role) {
-            Role::create($role);
         }
     }
 }
