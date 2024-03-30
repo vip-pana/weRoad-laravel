@@ -11,4 +11,13 @@ class Travel extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'travels';
+
+    protected $fillable = [
+        'slug',
+        'name',
+        'description',
+        'numberOfDays',
+        'isPublic',
+        'moods'
+    ];
 }
