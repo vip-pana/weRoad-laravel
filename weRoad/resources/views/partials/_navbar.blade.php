@@ -1,5 +1,5 @@
 <nav class="flex justify-between items-center my-4 p-2">
-    <div class="ms-3"><strong>WeRoad</strong></div>
+    <h2 class="ms-3 font-bold"><a href="/">WeRoad</a></h2>
     <ul class="flex space-x-6 mr-6 text-lg">
         <li>
             <a href="/travels/create">
