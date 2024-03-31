@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\User;
-use App\UserRole;
+use App\Enums\UserRole;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         $this->seedTravels();
         $this->seedTours();
 
