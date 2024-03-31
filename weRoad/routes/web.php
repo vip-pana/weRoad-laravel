@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TourController;
 use App\Http\Controllers\TravelController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,19 @@ Route::put('/travels/{travel}', [TravelController::class, 'update']);
 
 // Delete Travels
 Route::delete('/travels/{travel}', [TravelController::class, 'destroy']);
+
+
+// Show create tour by travel
+Route::get('/travels/{travel}/tours/create', [TourController::class, 'create']);
+
+// Store Tour Data
+Route::post('/travels/{travel}/tours', [TourController::class, 'store']);
+
+// Show Edit Form
+Route::get('/tours/{tour}/edit', [TourController::class, 'edit']);
+
+// Update Tour
+Route::put('/tours/{tour}', [TourController::class, 'update'])->name('tours.update');
+
+// Delete Travels
+Route::delete('/tours/{tour}', [TourController::class, 'destroy']);

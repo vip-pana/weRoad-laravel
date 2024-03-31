@@ -7,7 +7,9 @@
 
     @unless (count($travels) == 0)
         @foreach ($travels as $travel)
-            <x-travel-card :travel="$travel" />
+            <div class="m-6">
+                <x-travel-card :travel="$travel" />
+            </div>
         @endforeach
     @else
         <p>No travels found</p>

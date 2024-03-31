@@ -127,6 +127,9 @@ class TravelController extends Controller
      */
     public function destroy(Travel $travel)
     {
+        // Elimina tutti i tour associati al travel
+        $travel->tours()->delete();
+
         $travel->delete();
         return redirect('/');
     }
