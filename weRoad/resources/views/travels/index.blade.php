@@ -1,7 +1,5 @@
 <x-layout>
-    @if (!Auth::check())
-        @include('partials._hero')
-    @endif
+    @include('partials._hero')
 
     @include('partials._search')
 
@@ -12,6 +10,6 @@
             </div>
         @endforeach
     @else
-        <p>No travels found</p>
+        <p class="text-center"><strong>No travels found</strong></p>
     @endunless
 </x-layout>

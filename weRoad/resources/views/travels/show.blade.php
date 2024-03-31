@@ -1,20 +1,18 @@
 <x-layout>
-    <a href="/" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i>Back
+    <a href="/" class="inline-block ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
     </a>
     <div class="mx-4">
         <x-card class="p-10">
-            <div class="flex flex-col items-center  text-center">
-                <h3 class="text-2xl mb-2">{{ $travel['name'] }}</h3>
+            <div class="flex flex-col items-center text-center gap-4">
+                <h3 class="text-2xl">{{ $travel->name }}</h3>
 
-                <div class="flex flex-row gap-2">
-
+                <div class="flex gap-2">
                     @foreach ($moods as $key => $mood)
-                        <div class="flex flex-row gap-1">
-                            <p>{{ $key }}: {{ $mood }}</p>
-                        </div>
+                        <p>{{ $key }}: {{ $mood }}</p>
                     @endforeach
                 </div>
-                <div>
+
+                <div class="w-full">
                     <div class="flex flex-row gap-2 justify-between">
                         @if ($tours->count() > 0)
                             @php
@@ -29,34 +27,35 @@
                             </span>
                         @endif
                         <div>
-                            {{ $travel['numberOfDays'] }} Giorni • {{ $travel['numberOfDays'] - 1 }} Notti
+                            {{ $travel->numberOfDays }} Days • {{ $travel->numberOfDays - 1 }} Nights
                         </div>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4">Travel description</h3>
-                    <div class="text-lg space-y-6">
-                        {{ $travel['description'] }}
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-5">Travel description</h3>
+                    <div class="text-lg">
+                        {{ $travel->description }}
                     </div>
                 </div>
             </div>
         </x-card>
         <div class="mt-3">
             <x-card>
-                <h3 class="text-3xl font-bold my-3 text-center">Tours</h3>
-
+                <h3 class="text-3xl font-bold mb-3 text-center">Tours</h3>
                 <div class="flex flex-wrap justify-around gap-3">
                     @unless (count($tours) == 0)
                         @foreach ($tours as $tour)
-                            <x-card class="w-96">
-                                <p class="text-center mb-2">
+                            <x-card class="w-96 flex flex-col gap-3 text-center">
+                                <p>
                                     {{ $tour->name }}
                                 </p>
-                                <p class="text-center mb-2">
+                                <p>
                                     {{ $tour->startingDate }} -> {{ $tour->endingDate }}
                                 </p>
-                                <p class="text-center">
+                                <p>
                                     {{ number_format(intval($tour->price / 100), -4, ',', '.') }} €
                                 </p>
-                                <div class="mt-4 p-2 flex space-x-6 justify-between">
+                                <div class="flex justify-between">
                                     <a href="/tours/{{ $tour->id }}/edit">
                                         <i class="fa-solid fa-pencil"></i> Edit
                                     </a>

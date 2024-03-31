@@ -13,9 +13,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        laravel: '#ef3b2d',
-                    },
+                    colors: {},
                 },
             },
         }
@@ -24,23 +22,7 @@
 </head>
 
 <body>
-    <nav class="flex justify-between items-center my-4">
-        <ul class="flex space-x-6 mr-6 text-lg">
-            <li>
-                <a href="/travels/create">
-                    Create travel
-                </a>
-            </li>
-            <li>
-                <form class="inline" method="POST" action="/logout">
-                    @csrf
-                    <button type="submit">
-                        <i class="fa-solid fa-door-closed"></i> Logout
-                    </button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    @include('partials._navbar')
     <main>
         {{ $slot }}
     </main>
