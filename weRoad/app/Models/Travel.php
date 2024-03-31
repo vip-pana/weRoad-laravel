@@ -20,4 +20,10 @@ class Travel extends Model
         'isPublic',
         'moods'
     ];
+
+
+    public function tours()
+    {
+        return $this->hasMany(Tour::class);
+    }
 }

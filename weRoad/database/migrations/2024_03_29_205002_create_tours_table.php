@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('startingDate');
             $table->date('endingDate');
             $table->float('price');
-            $table->foreignUuid('travelId')->constrained('travels');
+            $table->foreignUuid('travelId')->constrained('travels')->onDelete('cascade');
             $table->timestamps();
         });
     }

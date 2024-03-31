@@ -11,4 +11,17 @@ class Tour extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'tours';
+
+    protected $fillable = [
+        'name',
+        'startingDate',
+        'endingDate',
+        'price',
+        'travelId'
+    ];
+
+    public function travel()
+    {
+        return $this->belongsTo(Travel::class);
+    }
 }
