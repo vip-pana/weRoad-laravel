@@ -1,6 +1,5 @@
-<x-layout>
-    <a href="/" class="inline-block ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
-    </a>
+<x-app-layout>
+    <a href="{{ route('dashboard') }}" class="inline-block m-4">Back</a>
     <div class="mx-4">
         <x-card class="p-10">
             <div class="flex flex-col items-center text-center gap-4">
@@ -90,4 +89,4 @@
             </form>
         </x-card>
     </div>
-</x-layout>
+</x-app-layout>

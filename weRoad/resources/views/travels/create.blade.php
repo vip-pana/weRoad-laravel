@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <div class="mx-4">
         <x-card>
             <header class="text-center">
@@ -107,4 +107,4 @@
             </form>
         </x-card>
     </div>
-</x-layout>
+</x-app-layout>

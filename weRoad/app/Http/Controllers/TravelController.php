@@ -14,7 +14,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        return View("travels.index", [
+        return View("dashboard", [
             "travels" => Travel::all()
         ]);
     }
