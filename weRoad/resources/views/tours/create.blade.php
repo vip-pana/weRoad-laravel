@@ -51,7 +51,7 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Create Tour
                     </button>
-                    <a href="{{ route('dashboard') }}" class="text-black ml-4"> Back </a>
+                    <a href="{{ back()->getTargetUrl() }}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </x-card>
