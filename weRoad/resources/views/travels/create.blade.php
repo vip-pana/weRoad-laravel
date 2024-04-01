@@ -8,7 +8,7 @@
                 <p class="mb-4">Post a travel</p>
             </header>
 
-            <form method="POST" action="/travels">
+            <form method="POST" action="{{ route('travels.store') }}">
                 @csrf
                 <div class="flex flex-col gap-6">
                     <div class="flex gap-6">
@@ -54,7 +54,8 @@
 
                         <div class="flex gap-1">
                             <label for="nature" class="inline-block text-lg">Nature:</label>
-                            <input type="number" class="w-16" name="nature" placeholder="0 (%)">
+                            <input type="number" class="w-16" name="nature" placeholder="0 (%)"
+                                value="{{ old('nature') }}">
                             <br>
                             @error('nature')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -63,7 +64,8 @@
 
                         <div class="flex gap-1">
                             <label for="relax" class="inline-block text-lg">Relax:</label>
-                            <input type="number" class="w-16" name="relax" placeholder="0 (%)">
+                            <input type="number" class="w-16" name="relax" placeholder="0 (%)"
+                                value="{{ old('relax') }}">
                             <br>
                             @error('relax')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -72,7 +74,8 @@
 
                         <div class="flex gap-1">
                             <label for="history" class="inline-block text-lg">History:</label>
-                            <input type="number" class="w-16" name="history" placeholder="0 (%)">
+                            <input type="number" class="w-16" name="history" placeholder="0 (%)"
+                                value="{{ old('history') }}">
                             <br>
                             @error('history')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -81,7 +84,8 @@
 
                         <div class="flex gap-1">
                             <label for="culture" class="inline-block text-lg">Culture:</label>
-                            <input type="number" class="w-16" name="culture" placeholder="0 (%)">
+                            <input type="number" class="w-16" name="culture" placeholder="0 (%)"
+                                value="{{ old('culture') }}">
                             <br>
                             @error('culture')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -90,7 +94,8 @@
 
                         <div class="flex gap-1">
                             <label for="party" class="inline-block text-lg">Party:</label>
-                            <input type="number" class="w-16" name="party" placeholder="0 (%)">
+                            <input type="number" class="w-16" name="party" placeholder="0 (%)"
+                                value="{{ old('party') }}">
                             <br>
                             @error('party')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -102,7 +107,7 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Create Travel
                     </button>
-                    <a href="/" class="text-black ml-4"> Back </a>
+                    <a href="{{ route('dashboard') }}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </x-card>

@@ -5,10 +5,6 @@ use App\Http\Controllers\TravelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Show Travels index
-Route::get('/', [TravelController::class, 'index'])->name('dashboard');
-Route::get('/travels/{travel}', [TravelController::class, 'show'])->name('travels.show');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -33,5 +29,9 @@ Route::middleware('auth')->group(function () {
         Route::put('/travels/{travel}', [TravelController::class, 'update'])->name('travels.update');
     });
 });
+
+// Show Travels index
+Route::get('/', [TravelController::class, 'index'])->name('dashboard');
+Route::get('/travels/{travel}', [TravelController::class, 'show'])->name('travels.show');
 
 require __DIR__ . '/auth.php';

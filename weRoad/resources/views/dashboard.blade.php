@@ -5,21 +5,17 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @include('partials._search')
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @include('partials._search')
 
-            @unless (count($travels) == 0)
-                @foreach ($travels as $travel)
-                    <div class="mt-8">
-                        <x-travel-card :travel="$travel" />
-                    </div>
-                @endforeach
-            @else
-                <div class="m-6">
-                    <h1 class="text-3xl text-center font-bold">No travels found</h1>
+        @unless (count($travels) == 0)
+            @foreach ($travels as $travel)
+                <div class="mt-8">
+                    <x-travel-card :travel="$travel" />
                 </div>
-            @endunless
-        </div>
+            @endforeach
+        @else
+            <h1 class="m-6 text-3xl text-center font-bold">No travels found</h1>
+        @endunless
     </div>
 </x-app-layout>

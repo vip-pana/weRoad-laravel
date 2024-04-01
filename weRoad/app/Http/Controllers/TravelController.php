@@ -33,12 +33,12 @@ class TravelController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'numberOfDays' => ['required', 'numeric'],
-            'nature' => ['required', 'numeric'],
-            'relax' => ['required', 'numeric'],
-            'history' => ['required', 'numeric'],
-            'culture' => ['required', 'numeric'],
-            'party' => ['required', 'numeric'],
+            'numberOfDays' => ['required', 'numeric', 'between:0,100'],
+            'nature' => ['required', 'numeric', 'between:0,100'],
+            'relax' => ['required', 'numeric', 'between:0,100'],
+            'history' => ['required', 'numeric', 'between:0,100'],
+            'culture' => ['required', 'numeric', 'between:0,100'],
+            'party' => ['required', 'numeric', 'between:0,100'],
         ]);
 
         $isPublic = $request->has('isPublic');

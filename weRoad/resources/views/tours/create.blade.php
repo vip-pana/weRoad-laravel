@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <div class="mx-4">
         <x-card>
             <header class="text-center">
@@ -8,7 +8,7 @@
                 <p class="mb-4">Tour related to travel: {{ $travel->name }}</p>
             </header>
 
-            <form method="POST" action="/travels/{{ $travel->id }}/tours">
+            <form method="POST" action="{{ route('tours.store', ['travel' => $travel->id]) }}">
                 @csrf
                 <div class="flex flex-col gap-6 mb-6">
                     <div>
@@ -51,9 +51,9 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Create Tour
                     </button>
-                    <a href="/" class="text-black ml-4"> Back </a>
+                    <a href="{{ route('dashboard') }}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </x-card>
     </div>
-</x-layout>
+</x-app-layout>

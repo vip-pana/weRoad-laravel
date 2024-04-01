@@ -8,7 +8,7 @@
                 <p class="mb-4">Edit the travel</p>
             </header>
 
-            <form method="POST" action="/travels/{{ $travel->id }}">
+            <form method="POST" action="{{ route('travels.update', [('travel')->$travel->id]) }}">
                 @csrf
                 @method('PUT')
                 <div class="flex gap-3 justify-between mb-6">
@@ -63,7 +63,7 @@
                 <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                     Update Travel
                 </button>
-                <a href="/" class="text-black ml-4"> Back </a>
+                <a href="{{ route('dashboard') }}" class="text-black ml-4"> Back </a>
             </form>
         </x-card>
     </div>

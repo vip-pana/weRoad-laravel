@@ -1,5 +1,5 @@
-<x-layout>
-    <div class="mx-4">
+<x-app-layout>
+    <div class="m-4">
         <x-card>
             <header class="text-center">
                 <h2 class="text-2xl font-bold uppercase mb-1">
@@ -54,9 +54,9 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Update Tour
                     </button>
-                    <a href="/" class="text-black ml-4"> Back </a>
+                    <a href="{{ route('dashboard') }}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </x-card>
     </div>
-</x-layout>
+</x-app-layout>
