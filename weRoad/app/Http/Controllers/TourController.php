@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use App\Models\Travel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TourController extends Controller
@@ -23,9 +24,21 @@ class TourController extends Controller
     {
         $formFields = $request->validate([
             'name' => 'required',
-            'startingDate' => 'required|date',
-            'endingDate' => 'required|date|after:startingDate',
-            'price' => 'required|numeric'
+            'startingDate' => ['required', 'date', 'after_or_equal:today'],
+            'endingDate' => [
+                'required',
+                'date',
+                'after:startingDate',
+                function ($attribute, $value, $fail) use ($request, $travel) {
+                    $startingDate = Carbon::parse($request->input('startingDate'));
+                    $endingDate = Carbon::parse($value);
+
+                    if ($startingDate->diffInDays($endingDate) > $travel->numberOfDays) {
+                        $fail('The difference between starting date and ending date must be at most ' . $travel->numberOfDays . ' days.');
+                    }
+                },
+            ],
+            'price' => ['required', 'numeric', 'gt:0']
         ]);
 
         $formFields['price'] *= 100;
@@ -39,7 +52,9 @@ class TourController extends Controller
      */
     public function edit(Tour $tour)
     {
-        return View('tours.edit', ["tour" => $tour]);
+        $travel = Travel::find($tour->travelId);
+
+        return View('tours.edit', ["tour" => $tour, 'travel' => $travel]);
     }
 
     /**
@@ -47,14 +62,26 @@ class TourController extends Controller
      */
     public function update(Request $request, Tour $tour)
     {
+        $travel = Travel::find($tour->travelId);
+
         $formFields = $request->validate([
             'name' => 'required',
-            'startingDate' => 'required',
-            'endingDate' => 'required',
-            'price' => 'required'
+            'startingDate' => ['required', 'date', 'after_or_equal:today'],
+            'endingDate' => [
+                'required',  'date', 'after:startingDate',
+                function ($attribute, $value, $fail) use ($request, $travel) {
+                    $startingDate = Carbon::parse($request->input('startingDate'));
+                    $endingDate = Carbon::parse($value);
+
+                    if ($startingDate->diffInDays($endingDate) > $travel->numberOfDays) {
+                        $fail('The difference between starting date and ending date must be at most ' . $travel->numberOfDays . ' days.');
+                    }
+                },
+            ],
+            'price' => ['required', 'numeric', 'gt:0']
         ]);
 
-        $formFields['price'] = $formFields['price'] * 100;
+        $formFields['price'] *= 100;
 
         $tour->update($formFields);
 

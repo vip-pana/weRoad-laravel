@@ -33,7 +33,7 @@ class TravelController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'numberOfDays' => ['required', 'numeric', 'between:0,100'],
+            'numberOfDays' => ['required', 'numeric', 'gt:0'],
             'nature' => ['required', 'numeric', 'between:0,100'],
             'relax' => ['required', 'numeric', 'between:0,100'],
             'history' => ['required', 'numeric', 'between:0,100'],
@@ -49,18 +49,12 @@ class TravelController extends Controller
         }
 
         $moods = [
-            "nature" => $request->nature ?? 0,
-            "relax" => $request->relax ?? 0,
-            "history" => $request->history ?? 0,
-            "culture" => $request->culture ?? 0,
-            "party" => $request->party ?? 0
+            "nature" => $request->nature,
+            "relax" => $request->relax,
+            "history" => $request->history,
+            "culture" => $request->culture,
+            "party" => $request->party
         ];
-
-        foreach ($moods as $key => $value) {
-            if ($value > 100) {
-                return redirect()->back()->withErrors([$key => 'The value of ' . $key . ' can\'t be greater than 100.']);
-            }
-        }
 
         Travel::create(array_merge($formFields, ['isPublic' => $isPublic, 'slug' => $slug, 'moods' => json_encode($moods)]));
 
@@ -99,7 +93,12 @@ class TravelController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'numberOfDays' => ['required', 'numeric'],
+            'numberOfDays' => ['required', 'numeric', 'gt:0'],
+            'nature' => ['required', 'numeric', 'between:0,100'],
+            'relax' => ['required', 'numeric', 'between:0,100'],
+            'history' => ['required', 'numeric', 'between:0,100'],
+            'culture' => ['required', 'numeric', 'between:0,100'],
+            'party' => ['required', 'numeric', 'between:0,100'],
         ]);
 
         $isPublic = $request->has('isPublic');
@@ -107,18 +106,12 @@ class TravelController extends Controller
         $slug =  str_replace(" ", "-", strtolower($formFields['name']));
 
         $moods = [
-            "nature" => $request->nature ?? 0,
-            "relax" => $request->relax ?? 0,
-            "history" => $request->history ?? 0,
-            "culture" => $request->culture ?? 0,
-            "party" => $request->party ?? 0
+            "nature" => $request->nature,
+            "relax" => $request->relax,
+            "history" => $request->history,
+            "culture" => $request->culture,
+            "party" => $request->party
         ];
-
-        foreach ($moods as $key => $value) {
-            if ($value > 100) {
-                return redirect()->back()->withErrors([$key => 'The value of ' . $key . ' can\'t be greater than 100.']);
-            }
-        }
 
         $travel->update(array_merge($formFields, ['isPublic' => $isPublic, 'slug' => $slug, 'moods' => json_encode($moods)]));
 
