@@ -54,16 +54,18 @@
                                 <p>
                                     {{ number_format(intval($tour->price / 100), -4, ',', '.') }} €
                                 </p>
-                                <div class="flex justify-between">
-                                    <a href="/tours/{{ $tour->id }}/edit">
-                                        <i class="fa-solid fa-pencil"></i> Edit
-                                    </a>
-                                    <form method="POST" action="/tours/{{ $tour->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
-                                    </form>
-                                </div>
+                                @can('isAdmin')
+                                    <div class="flex justify-between">
+                                        <a href="/tours/{{ $tour->id }}/edit">
+                                            <i class="fa-solid fa-pencil"></i> Edit
+                                        </a>
+                                        <form method="POST" action="/tours/{{ $tour->id }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                                        </form>
+                                    </div>
+                                @endcan
                             </x-card>
                         @endforeach
                     @else
@@ -74,19 +76,22 @@
         </div>
 
         <x-card class="mt-4 p-2 flex space-x-6">
-            <a href="/travels/{{ $travel->id }}/edit">
-                <i class="fa-solid fa-pencil"></i> Edit
-            </a>
+            @can('isEditor')
+                <a href="/travels/{{ $travel->id }}/edit">
+                    <i class="fa-solid fa-pencil"></i> Edit
+                </a>
+            @endcan
+            @can('isAdmin')
+                <a href="/travels/{{ $travel->id }}/tours/create">
+                    <i class="fa-plus fa-pencil"></i> Add a new tour
+                </a>
 
-            <a href="/travels/{{ $travel->id }}/tours/create">
-                <i class="fa-plus fa-pencil"></i> Add a new tour
-            </a>
-
-            <form method="POST" action="/travels/{{ $travel->id }}">
-                @csrf
-                @method('DELETE')
-                <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
-            </form>
+                <form method="POST" action="/travels/{{ $travel->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                </form>
+            @endcan
         </x-card>
     </div>
 </x-app-layout>

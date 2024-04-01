@@ -44,7 +44,7 @@
 
                     <div class="mb-6 flex gap-5 justify-between">
                         <div class="flex gap-1">
-                            <label for="isPublic" class="inline-block text-lg">Is public</label>
+                            <label for="isPublic" class="inline-block text-lg">Is public:</label>
                             <input type="checkbox" name="isPublic" value="1"
                                 @if (old('isPublic')) checked @endif />
                             @error('isPublic')
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="flex gap-1">
-                            <label for="relax" class="inline-block text-lg">Nature:</label>
+                            <label for="relax" class="inline-block text-lg">Relax:</label>
                             <input type="number" class="w-16" name="relax" placeholder="0 (%)">
                             <br>
                             @error('relax')
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="flex gap-1">
-                            <label for="history" class="inline-block text-lg">Nature:</label>
+                            <label for="history" class="inline-block text-lg">History:</label>
                             <input type="number" class="w-16" name="history" placeholder="0 (%)">
                             <br>
                             @error('history')
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="flex gap-1">
-                            <label for="culture" class="inline-block text-lg">Nature:</label>
+                            <label for="culture" class="inline-block text-lg">Culture:</label>
                             <input type="number" class="w-16" name="culture" placeholder="0 (%)">
                             <br>
                             @error('culture')
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="flex gap-1">
-                            <label for="party" class="inline-block text-lg">Nature:</label>
+                            <label for="party" class="inline-block text-lg">Party:</label>
                             <input type="number" class="w-16" name="party" placeholder="0 (%)">
                             <br>
                             @error('party')

@@ -14,9 +14,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        return View("dashboard", [
-            "travels" => Travel::all()
-        ]);
+        return View("dashboard", ["travels" => Travel::all()]);
     }
 
     /**
@@ -35,7 +33,12 @@ class TravelController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'numberOfDays' => 'required',
+            'numberOfDays' => ['required', 'numeric'],
+            'nature' => ['required', 'numeric'],
+            'relax' => ['required', 'numeric'],
+            'history' => ['required', 'numeric'],
+            'culture' => ['required', 'numeric'],
+            'party' => ['required', 'numeric'],
         ]);
 
         $isPublic = $request->has('isPublic');
@@ -61,7 +64,7 @@ class TravelController extends Controller
 
         Travel::create(array_merge($formFields, ['isPublic' => $isPublic, 'slug' => $slug, 'moods' => json_encode($moods)]));
 
-        return redirect('/');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -96,7 +99,7 @@ class TravelController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'numberOfDays' => 'required',
+            'numberOfDays' => ['required', 'numeric'],
         ]);
 
         $isPublic = $request->has('isPublic');
