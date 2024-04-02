@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use App\Models\Travel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -14,32 +15,7 @@ class TravelController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Travel::query()->with('tours');
-
-        // search filters
-        if ($request->has('dateFrom') && $request->input('dateFrom') != null) {
-            $query->whereHas('tours', function ($q) use ($request) {
-                $q->where('dateStart', '>=', $request->input('dateFrom'));
-            });
-        }
-        if ($request->has('dateTo') && $request->input('dateTo') != null) {
-            $query->whereHas('tours', function ($q) use ($request) {
-                $q->where('dateEnd', '=<', $request->input('dateTo'));
-            });
-        }
-
-        if ($request->has('priceFrom') && $request->input('priceFrom') != null) {
-            $query->whereHas('tours', function ($q) use ($request) {
-                $q->where('price', '>=', $request->input('priceFrom'));
-            });
-        }
-        if ($request->has('priceTo') && $request->input('priceTo') != null) {
-            $query->whereHas('tours', function ($q) use ($request) {
-                $q->where('price', '=<', $request->input('priceTo'));
-            });
-        }
-
-        $travels = $query->with('tours')->paginate(3);
+        $travels = Travel::with('tours')->paginate(4);
 
         return View("dashboard", ["travels" => $travels]);
     }
@@ -91,9 +67,35 @@ class TravelController extends Controller
     /**
      * Display the specified travel.
      */
-    public function show(Travel $travel)
+    public function show(Request $request, string $slug)
     {
-        $tours = Tour::where('travelId', $travel->id)->get();
+        $travel = Travel::where('slug', $slug)->firstOrFail();
+        $tours = Tour::where('travelId', $travel->id);
+
+        // search filters
+        if ($request->has('dateFrom') && $request->input('dateFrom') != null) {
+            $dateFrom = Carbon::createFromFormat('Y-m-d', $request->input('dateFrom'));
+            $tours->where('dateStart', '>=', $dateFrom);
+        }
+        if ($request->has('dateTo') && $request->input('dateTo') != null) {
+            $dateTo = Carbon::createFromFormat('Y-m-d', $request->input('dateTo'));
+            $tours->where('dateStart', '<=', $dateTo);
+        }
+
+        if ($request->has('priceFrom') && $request->input('priceFrom') != null) {
+            $tours->where('price', '>=', $request->input('priceFrom') * 100);
+        }
+        if ($request->has('priceTo') && $request->input('priceTo') != null) {
+            $tours->where('price', '<=', $request->input('priceTo') * 100);
+        }
+
+        if ($request->has('orderBy') && $request->input('orderBy') != "") {
+            $tours->orderBy('price', $request->input('orderBy'));
+        } else {
+            $tours->orderBy('dateStart', 'ASC');
+        }
+
+        $tours = $tours->paginate(5);
 
         $moods = json_decode($travel->moods);
         return View("travels.show", [

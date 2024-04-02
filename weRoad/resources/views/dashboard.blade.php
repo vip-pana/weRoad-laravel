@@ -6,8 +6,6 @@
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        @include('partials._search')
-
         @unless (count($travels) == 0)
             @foreach ($travels as $travel)
                 <div class="mt-8">
@@ -17,5 +15,8 @@
         @else
             <h1 class="m-6 text-3xl text-center font-bold">No travels found</h1>
         @endunless
+        <div class="mt-8">
+            {{ $travels->links() }}
+        </div>
     </div>
 </x-app-layout>

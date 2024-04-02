@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="m-4">
+    <div class="m-4 max-w-7xl mx-auto">
         <x-card>
             <header class="text-center">
                 <h2 class="text-2xl font-bold uppercase mb-1">
@@ -54,7 +54,7 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Update Tour
                     </button>
-                    <a href="{{ route('travels.show', ['travel' => $travel->id]) }}" class="text-black ml-4"> Back </a>
+                    <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </x-card>

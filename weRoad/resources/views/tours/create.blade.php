@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="mx-4">
+    <div class="m-4 max-w-7xl mx-auto">
         <x-card>
             <header class="text-center">
                 <h2 class="text-2xl font-bold uppercase mb-1">

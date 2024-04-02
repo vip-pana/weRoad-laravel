@@ -30,6 +30,6 @@ Route::middleware('auth')->group(function () {
 
 // Show Travels index
 Route::get('/', [TravelController::class, 'index'])->name('dashboard');
-Route::get('/travels/{travel}', [TravelController::class, 'show'])->name('travels.show');
+Route::get('/travels/{slug}', [TravelController::class, 'show'])->name('travels.show');
 
 require __DIR__ . '/auth.php';
