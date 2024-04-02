@@ -12,9 +12,36 @@ class TravelController extends Controller
     /**
      * Display a listing of the travel.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return View("dashboard", ["travels" => Travel::all()]);
+        $query = Travel::query()->with('tours');
+
+        // search filters
+        if ($request->has('dateFrom') && $request->input('dateFrom') != null) {
+            $query->whereHas('tours', function ($q) use ($request) {
+                $q->where('dateStart', '>=', $request->input('dateFrom'));
+            });
+        }
+        if ($request->has('dateTo') && $request->input('dateTo') != null) {
+            $query->whereHas('tours', function ($q) use ($request) {
+                $q->where('dateEnd', '=<', $request->input('dateTo'));
+            });
+        }
+
+        if ($request->has('priceFrom') && $request->input('priceFrom') != null) {
+            $query->whereHas('tours', function ($q) use ($request) {
+                $q->where('price', '>=', $request->input('priceFrom'));
+            });
+        }
+        if ($request->has('priceTo') && $request->input('priceTo') != null) {
+            $query->whereHas('tours', function ($q) use ($request) {
+                $q->where('price', '=<', $request->input('priceTo'));
+            });
+        }
+
+        $travels = $query->with('tours')->paginate(3);
+
+        return View("dashboard", ["travels" => $travels]);
     }
 
     /**

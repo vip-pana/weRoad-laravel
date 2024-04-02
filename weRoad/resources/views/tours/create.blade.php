@@ -23,7 +23,7 @@
                         <div class="w-full">
                             <label for="startingDate" class="inline-block text-lg mb-2">Starting date</label>
                             <input type="date" class="border border-gray-200 rounded p-2 w-full" name="startingDate"
-                                value="{{ old('startingDate', now()->toDateString()) }}"" required />
+                                value="{{ old('startingDate', now()->toDateString()) }}" required />
                             @error('startingDate')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
