@@ -78,6 +78,118 @@ class DatabaseSeeder extends Seeder
                     "culture" => 80,
                     "party" => 70
                 ]
+            ],
+            [
+                "id" => "e7b49c8c-5260-4e4f-9f9c-fa5ad5cc31d0",
+                "slug" => "safari-in-tanzania",
+                "name" => "Safari in Tanzania",
+                "description" => "Experience the adventure of a lifetime with our Safari in Tanzania tour. Witness the breathtaking wildlife of the Serengeti National Park, explore the majestic Ngorongoro Crater, and immerse yourself in the rich culture of the Maasai tribe. From the vast plains of the Serengeti to the stunning landscapes of Tarangire National Park, this safari will leave you with unforgettable memories.",
+                "numberOfDays" => 10,
+                "moods" => [
+                    "nature" => 90,
+                    "relax" => 10,
+                    "history" => 20,
+                    "culture" => 70,
+                    "party" => 5
+                ]
+            ],
+            [
+                "id" => "54b7fc63-3fb2-479b-90d4-c2d90af7553c",
+                "slug" => "explore-thailand",
+                "name" => "Explore Thailand",
+                "description" => "Discover the beauty of Thailand on our Explore Thailand tour. Visit the bustling streets of Bangkok, explore the ancient temples of Ayutthaya, and relax on the pristine beaches of Phuket. Experience the vibrant culture, delicious cuisine, and stunning landscapes that make Thailand a must-visit destination for travelers.",
+                "numberOfDays" => 12,
+                "moods" => [
+                    "nature" => 60,
+                    "relax" => 80,
+                    "history" => 40,
+                    "culture" => 90,
+                    "party" => 60
+                ]
+            ],
+            [
+                "id" => "a8d6c514-37d3-4c02-aab9-b615034da0e7",
+                "slug" => "expedition-to-the-amazon-rainforest",
+                "name" => "Expedition to the Amazon Rainforest",
+                "description" => "Embark on an unforgettable journey with our Expedition to the Amazon Rainforest. Explore the diverse ecosystems of the Amazon, encounter exotic wildlife, and learn about the indigenous cultures that call this region home. From thrilling jungle treks to peaceful river cruises, this expedition offers a unique opportunity to experience the wonders of the world's largest rainforest.",
+                "numberOfDays" => 14,
+                "moods" => [
+                    "nature" => 100,
+                    "relax" => 30,
+                    "history" => 10,
+                    "culture" => 50,
+                    "party" => 5
+                ]
+            ],
+            [
+                "id" => "f27d9975-9e56-4869-86a1-5e6221b2e4d7",
+                "slug" => "trekking-in-the-himalayas",
+                "name" => "Trekking in the Himalayas",
+                "description" => "Embark on an epic journey with our Trekking in the Himalayas tour. Explore the breathtaking mountain landscapes, witness ancient monasteries nestled in the hills, and challenge yourself with high-altitude trekking adventures. From the majestic peaks of Everest to the serene valleys of Langtang, this trekking expedition offers an unforgettable experience for adventure enthusiasts.",
+                "numberOfDays" => 14,
+                "moods" => [
+                    "nature" => 100,
+                    "relax" => 10,
+                    "history" => 30,
+                    "culture" => 40,
+                    "party" => 5
+                ]
+            ],
+            [
+                "id" => "3b5afbbe-6703-4c21-b905-bc441a53fd54",
+                "slug" => "cultural-immersion-in-japan",
+                "name" => "Cultural Immersion in Japan",
+                "description" => "Immerse yourself in the rich culture and history of Japan with our Cultural Immersion in Japan tour. Experience traditional tea ceremonies, explore ancient temples and shrines, and indulge in delicious Japanese cuisine. From the bustling streets of Tokyo to the serene landscapes of Kyoto, this cultural journey will leave you with a deep appreciation for the beauty and complexity of Japanese culture.",
+                "numberOfDays" => 10,
+                "moods" => [
+                    "nature" => 20,
+                    "relax" => 60,
+                    "history" => 90,
+                    "culture" => 100,
+                    "party" => 20
+                ]
+            ],
+            [
+                "id" => "da8b51de-b9f3-4c14-88ff-d319c56fd6e0",
+                "slug" => "wine-tasting-in-tuscany",
+                "name" => "Wine Tasting in Tuscany",
+                "description" => "Discover the beauty of Tuscany and indulge in the finest wines with our Wine Tasting in Tuscany tour. Explore picturesque vineyards, visit historic wineries, and savor the flavors of Chianti, Brunello, and other renowned Tuscan wines. From rolling hills dotted with cypress trees to charming medieval villages, this wine tour offers a perfect blend of culture, history, and gastronomy.",
+                "numberOfDays" => 7,
+                "moods" => [
+                    "nature" => 40,
+                    "relax" => 80,
+                    "history" => 60,
+                    "culture" => 70,
+                    "party" => 30
+                ]
+            ],
+            [
+                "id" => "9c9927c5-c3f0-4bfc-8ae4-8e863c6d1029",
+                "slug" => "adventure-in-new-zealand",
+                "name" => "Adventure in New Zealand",
+                "description" => "Experience the thrill of adventure with our Adventure in New Zealand tour. Explore the stunning landscapes of Middle-earth, bungee jump off towering cliffs, and kayak through crystal-clear waters. From hiking in the majestic Fiordland National Park to exploring the geothermal wonders of Rotorua, this adventure tour offers an adrenaline-fueled journey through the Land of the Long White Cloud.",
+                "numberOfDays" => 10,
+                "moods" => [
+                    "nature" => 90,
+                    "relax" => 20,
+                    "history" => 30,
+                    "culture" => 40,
+                    "party" => 50
+                ]
+            ],
+            [
+                "id" => "6279b356-77f6-456d-b0d2-fd68a5b857c7",
+                "slug" => "sailing-the-greek-islands",
+                "name" => "Sailing the Greek Islands",
+                "description" => "Set sail on a magical journey through the Greek Islands with our Sailing the Greek Islands tour. Explore secluded beaches, swim in crystal-clear waters, and immerse yourself in the rich history and mythology of ancient Greece. From the iconic whitewashed buildings of Santorini to the vibrant nightlife of Mykonos, this sailing adventure offers an unforgettable experience in the Aegean Sea.",
+                "numberOfDays" => 7,
+                "moods" => [
+                    "nature" => 70,
+                    "relax" => 90,
+                    "history" => 80,
+                    "culture" => 60,
+                    "party" => 70
+                ]
             ]
         ];
 
