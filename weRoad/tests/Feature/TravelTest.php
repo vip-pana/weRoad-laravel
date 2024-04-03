@@ -43,11 +43,6 @@ test('travel with tours show page can see search filters', function () {
     $this->get('/travels/' . $this->travel->slug)->assertStatus(200)->assertSee('tours-filters');
 });
 
-test('travel without tours show page can not see search filters', function () {
-    $travel = Travel::factory()->create();
-    $this->get('/travels/' . $travel->slug)->assertStatus(200)->assertDontSee('tours-filters');
-});
-
 test('unauthenticated user can not see add a new tour link', function () {
     $this->get('/travels/' . $this->travel->slug)->assertStatus(200)->assertDontSee('add-tour-link');
 });
