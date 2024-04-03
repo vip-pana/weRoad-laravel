@@ -18,7 +18,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->seedTravels();
         $this->seedTours();
+        $this->createUsers();
+    }
 
+    private function createUsers(): void
+    {
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',

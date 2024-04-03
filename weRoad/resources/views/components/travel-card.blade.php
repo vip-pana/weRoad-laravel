@@ -27,7 +27,7 @@
         <div class="flex gap-5">
             <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}">View</a>
             @can('isEditor')
-                <a href="{{ route('travels.edit', ['id' => $travel->id]) }}">Edit</a>
+                <a href="{{ route('travels.edit', ['slug' => $travel->slug]) }}">Edit</a>
             @endcan
         </div>
     </div>

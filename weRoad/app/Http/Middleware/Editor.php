@@ -20,6 +20,6 @@ class Editor
             return $next($request);
         }
 
-        abort(401);
+        abort(403);
     }
 }

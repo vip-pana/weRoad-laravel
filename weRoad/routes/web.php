@@ -15,7 +15,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/travels', [TravelController::class, 'store'])->name('travels.store');
         Route::delete('/travels/{travel}', [TravelController::class, 'destroy'])->name('travels.destroy');
 
-        Route::get('/travels/{travel}/tours/create', [TourController::class, 'create'])->name('tours.create');
+        Route::get('/travels/{slug}/tours/create', [TourController::class, 'create'])->name('tours.create');
         Route::post('/travels/{travel}/tours', [TourController::class, 'store'])->name('tours.store');
         Route::get('/tours/{tour}/edit', [TourController::class, 'edit'])->name('tours.edit');
         Route::put('/tours/{tour}', [TourController::class, 'update'])->name('tours.update');
@@ -23,8 +23,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('can:isEditor')->group(function () {
-        Route::get('/travels/{travel}/edit', [TravelController::class, 'edit'])->name('travels.edit');
-        Route::put('/travels/{travel}', [TravelController::class, 'update'])->name('travels.update');
+        Route::get('/travels/{slug}/edit', [TravelController::class, 'edit'])->name('travels.edit');
+        Route::put('/travels/{id}', [TravelController::class, 'update'])->name('travels.update');
     });
 });
 
