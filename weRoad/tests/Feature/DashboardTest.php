@@ -1,6 +1,8 @@
 <?php
 
+use App\Enums\UserRole;
 use App\Models\Travel;
+use App\Models\User;
 
 test('can access dashboard page', function () {
     $this->get('/')->assertStatus(200);
@@ -39,4 +41,11 @@ test('viewer can not see edit and view links', function () {
     $this->get('/')->assertStatus(200)->assertDontSee('#edit-' . $travel->id)->assertDontSee('#view-' . $travel->id);
 });
 
-test('viewer can not see add tour link')->get('/')->assertStatus(200)->assertDontSee('#create-travel');
+test('viewer can not see add tour link')->get('/')->assertStatus(200)->assertDontSee('create-travel');
+
+test('viewer can see login link and can not see logout form')->get('/')->assertStatus(200)->assertSee('login-link')->assertDontSee('logout-form');
+
+test('admin can see logout form and can not see login link', function () {
+    $adminUser = User::factory()->create(['role' => UserRole::ADMIN]);
+    $this->actingAs($adminUser)->get('/')->assertStatus(200)->assertSee('logout-form')->assertDontSee('login-link');
+});

@@ -23,14 +23,16 @@
                 @can('isAdmin')
                     <td>
                         <div class="flex justify-around">
-                            <a href="/tours/{{ $tour->id }}/edit">
+                            <a href="/tours/{{ $tour->id }}/edit" class="edit-travel-link">
                                 <i class="fa-solid fa-pencil"></i> Edit
                             </a>
-                            <form method="POST" action="{{ route('tours.destroy', ['tour' => $tour->id]) }}">
+                            <form method="POST" action="{{ route('tours.destroy', ['tour' => $tour->id]) }}"
+                                class="delete-travel-form">
                                 @csrf
                                 @method('DELETE')
                                 <button class="text-red-500"><i class="fa-solid fa-trash"></i>
-                                    Delete</button>
+                                    Delete
+                                </button>
                             </form>
                         </div>
                     </td>

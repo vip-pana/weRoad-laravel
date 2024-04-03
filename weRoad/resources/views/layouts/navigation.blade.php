@@ -51,7 +51,7 @@
                             </x-dropdown-link>
 
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')"
@@ -63,7 +63,7 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="/login">Log in</a>
+                    <a href="/login" id="login-link">Log in</a>
                 @endauth
             </div>
 

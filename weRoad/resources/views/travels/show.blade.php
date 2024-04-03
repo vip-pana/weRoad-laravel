@@ -42,7 +42,7 @@
                     <h3 class="text-3xl font-bold mb-3 text-center">Tours</h3>
                     <x-travel-table :tours="$tours" />
                 @else
-                    <p class="text-center">No tours found</p>
+                    <p class="text-center" id="no-tour-text">No tours found</p>
                 @endunless
             </x-card>
         </div>
