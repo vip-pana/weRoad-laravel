@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->seedTravels();
-        // $this->seedTours();
-        Travel::factory(50)->has(Tour::factory()->count(50))->create();
+        $this->seedTravels();
+        $this->seedTours();
+        // Travel::factory(50)->has(Tour::factory()->count(50))->create();
 
         $this->createUsers();
     }
