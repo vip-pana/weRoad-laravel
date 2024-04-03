@@ -41,10 +41,9 @@ class TourController extends Controller
             'startingDate' => ['required', 'date', 'after_or_equal:today'],
             'endingDate' => [
                 'required',  'date', 'after:startingDate',
-                function ($fail) use ($request, $travel) {
+                function ($attribute, $value, $fail) use ($request, $travel) {
                     $startingDate = Carbon::parse($request->input('startingDate'));
-                    $endingDate = Carbon::parse($request->endingDate);
-
+                    $endingDate = Carbon::parse($request->input('endingDate'));
                     if ($startingDate->diffInDays($endingDate) > $travel->numberOfDays) {
                         $fail('The difference between starting date and ending date must be at most ' . $travel->numberOfDays . ' days.');
                     }

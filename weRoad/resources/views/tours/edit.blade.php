@@ -54,7 +54,8 @@
                     <button class="bg-teal-600 text-white rounded py-2 px-4 hover:bg-black">
                         Update Tour
                     </button>
-                    <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}" class="text-black ml-4"> Back </a>
+                    <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}" class="text-black ml-4"> Back
+                    </a>
                 </div>
             </form>
         </x-card>
