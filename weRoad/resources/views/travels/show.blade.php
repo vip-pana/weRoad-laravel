@@ -35,11 +35,11 @@
         </x-card>
         <div class="mt-3">
             <x-card>
+                <div class="mb-3">
+                    <x-travel-search :travel="$travel" />
+                </div>
+                <h3 class="text-3xl font-bold mb-3 text-center">Tours</h3>
                 @unless (count($tours) == 0)
-                    <div class="mb-3">
-                        <x-travel-search :travel="$travel" />
-                    </div>
-                    <h3 class="text-3xl font-bold mb-3 text-center">Tours</h3>
                     <x-travel-table :tours="$tours" />
                 @else
                     <p class="text-center" id="no-tour-text">No tours found</p>

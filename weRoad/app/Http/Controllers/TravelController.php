@@ -77,11 +77,11 @@ class TravelController extends Controller
     {
         if ($request->has('dateFrom') && $request->input('dateFrom') != null) {
             $dateFrom = Carbon::createFromFormat('Y-m-d', $request->input('dateFrom'));
-            $tours->where('dateStart', '>=', $dateFrom);
+            $tours->where('startingDate', '>=', $dateFrom);
         }
         if ($request->has('dateTo') && $request->input('dateTo') != null) {
             $dateTo = Carbon::createFromFormat('Y-m-d', $request->input('dateTo'));
-            $tours->where('dateStart', '<=', $dateTo);
+            $tours->where('startingDate', '<=', $dateTo);
         }
 
         if ($request->has('priceFrom') && $request->input('priceFrom') != null) {
