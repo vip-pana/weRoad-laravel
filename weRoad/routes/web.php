@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\TravelController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -32,4 +32,4 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [TravelController::class, 'index'])->name('dashboard');
 Route::get('/travels/{slug}', [TravelController::class, 'show'])->name('travels.show');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

@@ -29,7 +29,7 @@ class TourController extends Controller
         $formFields = $this->validateTour($request, $travel);
         $formFields['price'] *= 100;
 
-        Tour::create(array_merge($formFields, ["travelId" => $travel->id]));
+        Tour::create(array_merge($formFields, ['travelId' => $travel->id]));
 
         return redirect()->route('travels.show', ['slug' => $travel->slug]);
     }
@@ -45,11 +45,11 @@ class TourController extends Controller
                     $startingDate = Carbon::parse($request->input('startingDate'));
                     $endingDate = Carbon::parse($request->input('endingDate'));
                     if ($startingDate->diffInDays($endingDate) > $travel->numberOfDays) {
-                        $fail('The difference between starting date and ending date must be at most ' . $travel->numberOfDays . ' days.');
+                        $fail('The difference between starting date and ending date must be at most '.$travel->numberOfDays.' days.');
                     }
                 },
             ],
-            'price' => ['required', 'numeric', 'gt:0']
+            'price' => ['required', 'numeric', 'gt:0'],
         ]);
     }
 
@@ -60,7 +60,7 @@ class TourController extends Controller
     {
         $travel = Travel::find($tour->travelId);
 
-        return View('tours.edit', ["tour" => $tour, 'travel' => $travel]);
+        return View('tours.edit', ['tour' => $tour, 'travel' => $travel]);
     }
 
     /**
@@ -84,6 +84,7 @@ class TourController extends Controller
     public function destroy(Tour $tour): RedirectResponse
     {
         $tour->delete();
+
         return redirect()->back();
     }
 }

@@ -23,12 +23,11 @@ class TourFactory extends Factory
         // Genera una data casuale per la data di fine tra oggi e un mese
         $endDate = Carbon::now()->addMonth()->format('Y-m-d');
 
-
         return [
             'name' => fake()->name(),
             'startingDate' => $startDate,
             'endingDate' => $endDate,
-            'price' => rand(100, 1000)
+            'price' => rand(100, 1000),
         ];
     }
 }

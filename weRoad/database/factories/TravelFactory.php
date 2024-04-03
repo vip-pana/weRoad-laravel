@@ -18,12 +18,13 @@ class TravelFactory extends Factory
     public function definition(): array
     {
         $name = fake()->sentence();
-        $slug =  Str::slug($name);
+        $slug = Str::slug($name);
+
         return [
             'name' => $name,
             'slug' => $slug,
             'description' => fake()->paragraph(),
-            'numberOfDays' =>  rand(0, 15),
+            'numberOfDays' => rand(0, 15),
             'isPublic' => fake()->boolean(),
             'moods' => json_encode([
                 'nature' => rand(0, 100),
@@ -31,7 +32,7 @@ class TravelFactory extends Factory
                 'history' => rand(0, 100),
                 'culture' => rand(0, 100),
                 'party' => rand(0, 100),
-            ])
+            ]),
         ];
     }
 }

@@ -19,12 +19,11 @@ class Travel extends Model
         'description',
         'numberOfDays',
         'isPublic',
-        'moods'
+        'moods',
     ];
-
 
     public function tours(): HasMany
     {
-        return $this->hasMany(Tour::class, "travelId");
+        return $this->hasMany(Tour::class, 'travelId');
     }
 }

@@ -17,7 +17,7 @@ class TravelController extends Controller
      */
     public function index(): View
     {
-        return View("dashboard", ["travels" => Travel::with('tours')->paginate(4)]);
+        return View('dashboard', ['travels' => Travel::with('tours')->paginate(4)]);
     }
 
     /**
@@ -44,11 +44,11 @@ class TravelController extends Controller
         $isPublic = $request->has(key: 'isPublic');
 
         $moods = [
-            "nature" => $request->nature,
-            "relax" => $request->relax,
-            "history" => $request->history,
-            "culture" => $request->culture,
-            "party" => $request->party
+            'nature' => $request->nature,
+            'relax' => $request->relax,
+            'history' => $request->history,
+            'culture' => $request->culture,
+            'party' => $request->party,
         ];
 
         Travel::create(array_merge($formFields, ['isPublic' => $isPublic, 'slug' => $slug, 'moods' => json_encode($moods)]));
@@ -66,10 +66,10 @@ class TravelController extends Controller
 
         $tours = $this->applyFilters($tours, $request);
 
-        return View("travels.show", [
-            "travel" => $travel,
-            "tours" => $tours->paginate(5),
-            "moods" => json_decode($travel->moods),
+        return View('travels.show', [
+            'travel' => $travel,
+            'tours' => $tours->paginate(5),
+            'moods' => json_decode($travel->moods),
         ]);
     }
 
@@ -91,7 +91,7 @@ class TravelController extends Controller
             $tours->where('price', '<=', $request->input('priceTo') * 100);
         }
 
-        if ($request->has('orderBy') && $request->input('orderBy') != "") {
+        if ($request->has('orderBy') && $request->input('orderBy') != '') {
             $tours->orderBy('price', $request->input('orderBy'));
         } else {
             $tours->orderBy('dateStart', 'ASC');
@@ -100,7 +100,6 @@ class TravelController extends Controller
         return $tours;
     }
 
-
     /**
      * Show the form for editing the specified travel.
      */
@@ -108,7 +107,7 @@ class TravelController extends Controller
     {
         $travel = Travel::where('slug', $slug)->firstOrFail();
 
-        return View('travels.edit', ["travel" => $travel, "moods" => json_decode($travel->moods)]);
+        return View('travels.edit', ['travel' => $travel, 'moods' => json_decode($travel->moods)]);
     }
 
     /**
@@ -122,17 +121,17 @@ class TravelController extends Controller
 
         $isPublic = $request->has('isPublic');
 
-        $slug =  Str::slug($formFields['name']);
+        $slug = Str::slug($formFields['name']);
         if (Travel::where('slug', $slug)->where('id', '!=', $travel->id)->exists()) {
             return redirect()->back()->withErrors(['name' => 'Element already exists.']);
         }
 
         $moods = [
-            "nature" => $request->nature,
-            "relax" => $request->relax,
-            "history" => $request->history,
-            "culture" => $request->culture,
-            "party" => $request->party
+            'nature' => $request->nature,
+            'relax' => $request->relax,
+            'history' => $request->history,
+            'culture' => $request->culture,
+            'party' => $request->party,
         ];
 
         $travel->update(array_merge($formFields, ['isPublic' => $isPublic, 'slug' => $slug, 'moods' => json_encode($moods)]));
@@ -161,6 +160,7 @@ class TravelController extends Controller
     {
         $travel->tours()->delete();
         $travel->delete();
+
         return redirect()->route('dashboard');
     }
 }

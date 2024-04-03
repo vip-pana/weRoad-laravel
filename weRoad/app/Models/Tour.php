@@ -18,11 +18,11 @@ class Tour extends Model
         'startingDate',
         'endingDate',
         'price',
-        'travelId'
+        'travelId',
     ];
 
     public function travel(): BelongsTo
     {
-        return $this->belongsTo(Travel::class, "travelId");
+        return $this->belongsTo(Travel::class, 'travelId');
     }
 }
