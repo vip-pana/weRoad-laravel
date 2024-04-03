@@ -25,9 +25,9 @@
             <p>Max price: {{ $formattedMaxPrice }}€</p>
         </div>
         <div class="flex gap-5">
-            <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}">View</a>
+            <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}" id="view-{{ $travel->id }}">View</a>
             @can('isEditor')
-                <a href="{{ route('travels.edit', ['slug' => $travel->slug]) }}">Edit</a>
+                <a href="{{ route('travels.edit', ['slug' => $travel->slug]) }}" id="edit-{{ $travel->id }}">Edit</a>
             @endcan
         </div>
     </div>

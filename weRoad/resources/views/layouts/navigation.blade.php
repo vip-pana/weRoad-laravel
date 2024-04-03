@@ -18,7 +18,7 @@
                 </div>
                 <!-- Navigation Links -->
                 @can('isAdmin')
-                    <div class="hidden sm:-my sm:ms-10 sm:flex">
+                    <div class="hidden sm:-my sm:ms-10 sm:flex" id="create-travel">
                         <x-nav-link :href="route('travels.create')" :active="request()->routeIs('travels.create')">
                             {{ __('Create Travel') }}
                         </x-nav-link>
