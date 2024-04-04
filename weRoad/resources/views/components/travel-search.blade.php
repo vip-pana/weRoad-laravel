@@ -1,6 +1,5 @@
     <x-card>
         <form action="{{ route('travels.show', ['slug' => $travel->slug]) }}" method="GET" id="tours-filters">
-            @csrf
             <div class="flex flex-wrap gap-3">
                 <div class="flex flex-col">
                     <label for="dateFrom">Date from:</label>
