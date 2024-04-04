@@ -22,19 +22,22 @@ Sono stati creati dati di accesso per gli utenti con ruoli predefiniti:
 2. Editor: `editor@gmail.com` con password `password`
 
 I dati di accesso sono gestiti nel file `/database/seeders/DatabaseSeeder.php`.
+### Seeders e Factories
+Sono state create le factories per ogni modello, queste vengono utilizzate nel database seeder per riempire il database di dati mock. 
+*** 
 ***
 ### Ruoli e Permessi
 Sono definiti due ruoli: **Admin** e **Editor**. I ruoli sono implementati utilizzando un enum di Integer, accessibile tramite `/app/Enums/UserRole.php`.
 
 - **Admin**:
-    - Creare un viaggio (Travel)
-    - Creare un tour associato a un viaggio
-    - Eliminare un viaggio
+    - Creare un Travel
+    - Creare un tour associato a un Travel
+    - Eliminare un Travel
     - Eliminare un tour
     - Modificare un tour
 
 - **Editor**:
-	- Modificare i dati dei viaggi
+	- Modificare i dati dei Travel
 
 - **Funzionalità per gli utenti non autenticati**:
 	- Visualizzare una lista paginata dei viaggi
@@ -104,8 +107,6 @@ tutte le proprieta dei modelli sono obbligatorie e i modelli sono:
 - `endingDate`: Date
 - `price`: float
 - `travelId`: UUID, Foreign Key di Travels
-### Seeders e Factories
-Sono state create le factories per ogni modello, queste vengono utilizzate nel database seeder per riempire il database di dati mock. 
-*** 
+
 ### Frontend
 Il frontend è basato su Blade con viste suddivise in cartelle per dominio, utilizzando componenti dalla cartella `components`. Le viste hanno degli elementi che sono visibili usando le direttive `@can` che permette di mostrare qualcosa in base a un controllo sui middlewares
