@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('can:isEditor')->group(function () {
         Route::get('/travels/{slug}/edit', [TravelController::class, 'edit'])->name('travels.edit');
-        Route::put('/travels/{id}', [TravelController::class, 'update'])->name('travels.update');
+        Route::put('/travels/{travel}', [TravelController::class, 'update'])->name('travels.update');
     });
 });
 
@@ -32,4 +32,4 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [TravelController::class, 'index'])->name('dashboard');
 Route::get('/travels/{slug}', [TravelController::class, 'show'])->name('travels.show');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

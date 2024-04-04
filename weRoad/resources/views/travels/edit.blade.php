@@ -8,7 +8,7 @@
                 <p class="mb-4">Edit the travel</p>
             </header>
 
-            <form method="POST" action="{{ route('travels.update', ['id' => $travel->id]) }}">
+            <form method="POST" action="{{ route('travels.update', ['travel' => $travel->id]) }}">
                 @csrf
                 @method('PUT')
                 <div class="flex gap-3 justify-between mb-6">
