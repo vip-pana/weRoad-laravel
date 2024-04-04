@@ -22,10 +22,9 @@ Sono stati creati dati di accesso per gli utenti con ruoli predefiniti:
 2. Editor: `editor@gmail.com` con password `password`
 
 I dati di accesso sono gestiti nel file `/database/seeders/DatabaseSeeder.php`.
-### Seeders e Factories
+#### Seeders e Factories
 Sono state create le factories per ogni modello, queste vengono utilizzate nel database seeder per riempire il database di dati mock. 
 *** 
-***
 ### Ruoli e Permessi
 Sono definiti due ruoli: **Admin** e **Editor**. I ruoli sono implementati utilizzando un enum di Integer, accessibile tramite `/app/Enums/UserRole.php`.
 
