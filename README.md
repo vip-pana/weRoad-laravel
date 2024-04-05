@@ -1,90 +1,81 @@
 # weRoad-laravel
 
-### Requisiti
-- PHP versione 8.2+
+### Requirements
+
+- PHP 8.2+
 - Composer
-## Installazione
-1. Clonare il repository
-2. Eseguire `composer install` per installare le dipendenze necessarie
-3. Eseguire `php artisan migrate --seed` per popolare il database con dati mock.
+## Installation
+
+1. Clone the repository
+2. Run `composer install` to install the necessary dependencies
+3. Run `php artisan migrate --seed` to populate the database with mock data.
 ### Packages
-- **Laravel Breeze**: Per l'autenticazione
-- **Faker**: Per il seeding dei dati nel database
-- **Pint**: Un Lint per la formattazione del codice
-- **Pest**: Una libreria per il testing
-## Descrizione
-Il progetto utilizza SQLite come database di supporto, eliminando la necessità di creare un database separato. L'autenticazione con autorizzazione assegna funzionalità specifiche in base al ruolo dell'utente.
-### Dati di accesso per i ruoli
 
-Sono stati creati dati di accesso per gli utenti con ruoli predefiniti:
+- **Laravel Breeze**: For authentication
+- **Faker**: For seeding data into the database
+- **Pint**: A Lint for formatting code
+- **Pest**: A library for testing
+## Description
 
-1. Admin: `admin@gmail.com` con password `password`
-2. Editor: `editor@gmail.com` con password `password`
+The project uses SQLite as a supporting database, eliminating the need to create a separate database. Authorization authentication assigns specific functionality based on the user's role.
 
-I dati di accesso sono gestiti nel file `/database/seeders/DatabaseSeeder.php`.
-#### Seeders e Factories
-Sono state create le factories per ogni modello, queste vengono utilizzate nel database seeder per riempire il database di dati mock. 
-*** 
-### Ruoli e Permessi
-Sono definiti due ruoli: **Admin** e **Editor**. I ruoli sono implementati utilizzando un enum di Integer, accessibile tramite `/app/Enums/UserRole.php`.
+### Access data for roles
+
+Login data has been created for users with predefined roles:
+
+1. Admin: `admin@gmail.com` with password `password`
+2. Editor: `editor@gmail.com` with password `password`
+
+Access data are managed in the file `/database/seeders/DatabaseSeeder.php`.
+### Seeders e Factories
+Factories have been created for each model, these are used in the seeder database to fill the database with mock data. 
 
 - **Admin**:
-    - Creare un Travel
-    - Creare un tour associato a un Travel
-    - Eliminare un Travel
-    - Eliminare un tour
-    - Modificare un tour
-
+    - Create a Travel
+    - Creare un tour associated with a Tour
+    - Delete a Travel
+    - Delete a Tour
+    - Edit a Tour
 - **Editor**:
-	- Modificare i dati dei Travel
-
-- **Funzionalità per gli utenti non autenticati**:
-	- Visualizzare una lista paginata dei viaggi
-	- Visualizzare i dettagli di un viaggio con i relativi tour
-	- Filtrare i tour associati a un viaggio attraverso i campi di ricerca
+	- Edit a Travel
+- **Features for unauthenticated users**:
+	- View a paginated list of Travels
+	- View the details of a Travel with related tours
+	- Filter the tours associated with a Travel through the search fields
 ***
 ## API Endpoints
+Endpoints are defined in the `routes` folder, managing permissions via middlewares, available at `/app/Http/Middleware`
+### Routes Accessible Without Authorization
+1. `GET /`: Displays the index of all Travels, paginated.
+2. `GET /travels/{slug}`: Displays a single trip and the table of tours associated with it.
+### Routes Accessible only by Admin and only if Authenticated
+1. `GET /travels/create`: Displays the creation page of a new travel.
+2. `POST /travels`: Creates a single travel.
+3. `DELETE /travels/{travel}`: Delete a single travel.
+4. `GET /travels/{slug}/tours/create`: Displays the creation page of a new tour associated with the travel.
+5. `POST /travels/{travel}/tours`: Creates a new tour associated with the travel.
+6. `GET /tours/{tour}/edit`: Displays the single tour edit page.
+7. `PUT /tours/{tour}`: Edit the tour.
+8. `DELETE /tours/{tour}`: Delete the tour.
+### Routes Accessible only by Editor and only if Authenticated
+1. `GET /travels/{slug}/edit`: View the single travel edit page.
+2. `PUT /travels/{slug}`: Edit the travel.
+#### Endpoint parameters
 
-Gli endpoint sono definiti nella cartella `routes`, gestendo le autorizzazioni tramite middlewares, disponibili su `/app/Http/Middleware`
-### Percorsi Accessibili senza Autorizzazione
-
-1. `GET /`: Visualizza l'indice di tutti i Travels, paginati.
-2. `GET /travels/{slug}`: Visualizza un singolo travel e la tabella dei tours associati ad esso.
-
-### Percorsi Raggiungibili solo dagli Amministratori e solo se Autenticati
-
-1. `GET /travels/create`: Visualizza la pagina di creazione di un nuovo travel.
-2. `POST /travels`: Crea un singolo travel.
-3. `DELETE /travels/{travel}`: Elimina un singolo travel.
-4. `GET /travels/{slug}/tours/create`: Visualizza la pagina di creazione di un nuovo tour associato al travel.
-5. `POST /travels/{travel}/tours`: Crea un nuovo tour associato al travel.
-6. `GET /tours/{tour}/edit`: Visualizza la pagina di modifica del singolo tour.
-7. `PUT /tours/{tour}`: Modifica il singolo tour.
-8. `DELETE /tours/{tour}`: Elimina il singolo tour.
-
-### Percorsi Accessibili solo dagli Editor e solo se Autenticati
-
-1. `GET /travels/{slug}/edit`: Visualizza la pagina di modifica del singolo travel.
-2. `PUT /travels/{slug}`: Modifica un singolo travel.
-
-#### Parametri degli Endpoints
-
-1. `{slug}`: Il valore `{slug}` rappresenta la proprietà slug del travel, ad esempio "foo-bar".
-2. `{travel}`: È l'ID del travel selezionato.
-3. `{tour}`: È l'ID del tour selezionato.
+1. `{slug}`: represents the slug property of the travel, for example "foo-bar".
+2. `{travel}`: It is the ID of the selected travel.
+3. `{tour}`: It is the ID of the selected tour.
 ***
 ## Controllers
-
-I controller gestiscono le azioni richiamabili dagli endpoint. Oltre ai controller che gestiscono l'autenticazione, situati nel percorso `/app/Http/Controllers/Auth`, e il controller `ProfileController.php`, responsabile della gestione del profilo dell'utente, ci sono:
-
-1. **TourController.php**: Si occupa della gestione CRUD dei Tour.
-2. **TravelController.php**: Si occupa della gestione CRUD dei Travel. Inoltre, contiene un metodo privato per applicare i filtri di ricerca al percorso GET del singolo Travel.
-***
+Controllers manage the actions that can be called from endpoints. In addition to the controllers that manage authentication, located in the path `/app/Http/Controllers/Auth`, and the `ProfileController.php` controller, responsible for managing the user's profile, there are:
+1. **TourController.php**: It deals with the CRUD management of the Tours.
+2. **TravelController.php**: It deals with the CRUD management of Travel. Additionally, it contains a private method to apply search filters to the individual Travel's GET path.
+*** 
 ## Database
-SQLite è utilizzato come database, i modelli delle entità sono realizzati creando delle migrazioni per le singole entità.
-### Modelli e Migrazioni
-Tutte le entità utilizzano un UUID come chiave primaria
-tutte le proprieta dei modelli sono obbligatorie e i modelli sono:
+SQLite is used as a database, entity models are created by creating migrations for individual entities.
+### Models and Migrations
+All entities use a UUID as their primary key
+all models properties are mandatory and the models are:
 ### User
 - `id`: UUID, Primary Key
 - `name`: string
@@ -106,6 +97,6 @@ tutte le proprieta dei modelli sono obbligatorie e i modelli sono:
 - `endingDate`: Date
 - `price`: float
 - `travelId`: UUID, Foreign Key di Travels
-
-### Frontend
-Il frontend è basato su Blade con viste suddivise in cartelle per dominio, utilizzando componenti dalla cartella `components`. Le viste hanno degli elementi che sono visibili usando le direttive `@can` che permette di mostrare qualcosa in base a un controllo sui middlewares
+*** 
+## Frontend
+The frontend is Blade based with views split into folders per domain, using components from the `components` folder. Views have elements that are visible using `@can` directives which allows you to show something based on a check on the middlewares
