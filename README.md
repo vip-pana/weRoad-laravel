@@ -31,7 +31,7 @@
 - Composer
 ## Installation
 
-1. Clone the repository
+1. Clone the repository and open the repository on your IDE
 2. Run `composer install` to install the necessary dependencies
 3. Run `php artisan migrate --seed` to populate the database with mock data.
 4. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
