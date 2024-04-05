@@ -16,8 +16,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth()->user() && Auth()->user()->role == UserRole::ADMIN) {
-            return $next($request);
+        if (Auth()->user()) {
+            if (Auth()->user()->role instanceof UserRole && Auth()->user()->role == UserRole::ADMIN) {
+                return $next($request);
+            } elseif (is_int(Auth()->user()->role) && Auth()->user()->role == UserRole::ADMIN->value) {
+                return $next($request);
+            }
         }
 
         abort(403);
