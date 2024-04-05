@@ -1,5 +1,30 @@
 # weRoad-laravel
 
+## Index 
+- [weRoad-laravel](#weroad-laravel)
+  - [Index](#index)
+    - [Requirements](#requirements)
+  - [Installation](#installation)
+    - [Packages](#packages)
+  - [Description](#description)
+    - [Access data for roles](#access-data-for-roles)
+    - [Seeders e Factories](#seeders-e-factories)
+  - [API Endpoints](#api-endpoints)
+    - [Routes Accessible Without Authorization](#routes-accessible-without-authorization)
+    - [Routes Accessible only by Admin and only if Authenticated](#routes-accessible-only-by-admin-and-only-if-authenticated)
+    - [Routes Accessible only by Editor and only if Authenticated](#routes-accessible-only-by-editor-and-only-if-authenticated)
+      - [Endpoint parameters](#endpoint-parameters)
+  - [Controllers](#controllers)
+  - [Database](#database)
+    - [Models and Migrations](#models-and-migrations)
+    - [User](#user)
+    - [Travel](#travel)
+    - [Tour](#tour)
+  - [Frontend](#frontend)
+  - [Tests](#tests)
+  - [Other](#other)
+
+
 ### Requirements
 
 - PHP 8.2+
@@ -9,6 +34,7 @@
 1. Clone the repository
 2. Run `composer install` to install the necessary dependencies
 3. Run `php artisan migrate --seed` to populate the database with mock data.
+4. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
 ### Packages
 
 - **Laravel Breeze**: For authentication
@@ -99,4 +125,18 @@ all models properties are mandatory and the models are:
 - `travelId`: UUID, Foreign Key di Travels
 *** 
 ## Frontend
-The frontend is Blade based with views split into folders per domain, using components from the `components` folder. Views have elements that are visible using `@can` directives which allows you to show something based on a check on the middlewares
+The frontend is Blade based with views split into folders per domain, using components from the `components` folder. Views have elements that are visible using `@can` directives which allows you to show something based on a check on the middlewares.
+***
+## Tests
+The tests are built using **Pest**, a PHP framework for unit testing.
+Most of the tests are of the Feature type which deal with testing the functioning of the app's features.
+To run the tests use the `php artisan test` command and all the tests will be executed completely.
+
+The tests cover the functionality of:
+- Authentication
+- Route authorization
+- Features on dashboard page
+- Features on the travel page
+
+## Other
+The project uses Pint as the linter, to run it just use the command `./vendor/bin/pint`
