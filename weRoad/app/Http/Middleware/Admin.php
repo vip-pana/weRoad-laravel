@@ -19,7 +19,7 @@ class Admin
         if (Auth()->user()) {
             if (Auth()->user()->role instanceof UserRole && Auth()->user()->role == UserRole::ADMIN) {
                 return $next($request);
-            } else if (is_int(Auth()->user()->role && Auth()->user()->role == UserRole::ADMIN->value)) {
+            } elseif (is_int(Auth()->user()->role) && Auth()->user()->role == UserRole::ADMIN->value) {
                 return $next($request);
             }
         }

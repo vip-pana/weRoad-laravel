@@ -19,7 +19,7 @@ class Editor
         if (Auth()->user()) {
             if (Auth()->user()->role instanceof UserRole && Auth()->user()->role == UserRole::EDITOR) {
                 return $next($request);
-            } else if (is_int(Auth()->user()->role && Auth()->user()->role == UserRole::EDITOR->value)) {
+            } elseif (is_int(Auth()->user()->role) && Auth()->user()->role == UserRole::EDITOR->value) {
                 return $next($request);
             }
         }
