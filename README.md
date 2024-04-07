@@ -140,5 +140,4 @@ The tests cover the functionality of:
 
 ## Other
 - The project uses **Pint** as the linter, to run it just use the command `./vendor/bin/pint`.
-- The project use **Larastan** as static code analysis tool with level 5. 
-
+- The project use **Larastan** as static code analysis tool with level 5. To run it just use the command `./vendor/bin/phpstan analyse`
