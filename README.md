@@ -139,4 +139,6 @@ The tests cover the functionality of:
 - Features on the travel page
 
 ## Other
-The project uses Pint as the linter, to run it just use the command `./vendor/bin/pint`
+- The project uses **Pint** as the linter, to run it just use the command `./vendor/bin/pint`.
+- The project use **Larastan** as static code analysis tool with level 5. 
+
