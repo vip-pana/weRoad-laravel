@@ -36,14 +36,14 @@ test('dashboard can not contain six travels', function () {
     $travel = $travels->last();
     $this->get('/')->assertStatus(200)
         ->assertViewHas('travels', function ($collection) use ($travel) {
-            return !$collection->contains($travel);
+            return ! $collection->contains($travel);
         });
 });
 
 test('unauthenticated user can not see edit and view links', function () {
     $travel = Travel::factory()->create();
     $this->get('/')->assertStatus(200)
-        ->assertDontSee('#edit-' . $travel->id)->assertDontSee('#view-' . $travel->id);
+        ->assertDontSee('#edit-'.$travel->id)->assertDontSee('#view-'.$travel->id);
 });
 
 test('unauthenticated user can not see add tour link')->get('/')->assertStatus(200)->assertDontSee('create-travel');
@@ -56,8 +56,3 @@ test('admin user can see logout form and can not see login link', function () {
 
 test('unauthenticated user can see login link and can not see logout form')->get('/')->assertStatus(200)->assertSee('login-link')->assertDontSee('logout-form');
 
-// test('admin user can see create travel link', function () {
-//     $adminUser = User::factory()->create(['role' => UserRole::ADMIN]);
-//     $this->actingAs($adminUser)->get('/')
-//         ->assertStatus(200)->assertSee('create-travel');
-// });
