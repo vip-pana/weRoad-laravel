@@ -149,7 +149,6 @@ The tests cover the functionality of:
 ***
 ### Other features/improvements to do
 #### Must
-- [X] Structure: Move the content of weRoad folder out of the folder
 - [ ] Tests: Resolve problems with assertSee tests with authorization
 - [ ] Update README.MD: add "how i worked" and "what could be done better" parts
 - [ ] Update README.MD: use gif(s) of the application in running
