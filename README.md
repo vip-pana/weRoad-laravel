@@ -3,8 +3,8 @@
 ## Index 
 - [weRoad-laravel](#weroad-laravel)
   - [Index](#index)
-    - [Requirements](#requirements)
   - [Installation](#installation)
+    - [Requirements](#requirements)
     - [Packages](#packages)
   - [Description](#description)
     - [Access data for roles](#access-data-for-roles)
@@ -25,16 +25,16 @@
   - [Other](#other)
 
 
-### Requirements
-
-- PHP 8.2+
-- Composer
 ## Installation
 
 1. Clone the repository and open the repository on your IDE
 2. Run `composer install` to install the necessary dependencies
 3. Run `php artisan migrate --seed` to populate the database with mock data.
 4. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
+### Requirements
+
+- PHP 8.2+
+- Composer
 ### Packages
 
 - **Laravel Breeze**: For authentication
