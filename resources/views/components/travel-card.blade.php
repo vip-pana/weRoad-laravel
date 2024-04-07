@@ -2,10 +2,10 @@
 
 <x-card>
     <div class="flex justify-between">
-        <h3 class="text-2xl ">
+        <h3 class="text-2xl w-96">
             {{ $travel->name }}
         </h3>
-        <div class="flex flex-col">
+        <div>
             @php
                 $startingDates = $travel->tours->pluck('startingDate');
                 $oldestStartingDate = $startingDates->min();
@@ -19,12 +19,16 @@
                 $lowestPriceTour = intval($lowestPriceTour / 100);
                 $formattedLowestPrice = number_format($lowestPriceTour, -4, ',', '.');
             @endphp
-            <p>Next Tour: {{ \Carbon\Carbon::parse($oldestStartingDate)->format('m/d/Y') }}</p>
-            <p>Last Tour: {{ \Carbon\Carbon::parse($newestStartingDate)->format('m/d/Y') }}</p>
-            <p>Starting from: {{ $formattedLowestPrice }}€</p>
-            <p>Max price: {{ $formattedMaxPrice }}€</p>
+            @if (count($travel->tours) != 0)
+                <p>Next Tour: {{ \Carbon\Carbon::parse($oldestStartingDate)->format('m/d/Y') }}</p>
+                <p>Last Tour: {{ \Carbon\Carbon::parse($newestStartingDate)->format('m/d/Y') }}</p>
+                <p>Starting from: {{ $formattedLowestPrice }}€</p>
+                <p>Max price: {{ $formattedMaxPrice }}€</p>
+            @else
+                No tours available
+            @endif
         </div>
-        <div class="flex gap-5">
+        <div>
             <a href="{{ route('travels.show', ['slug' => $travel->slug]) }}" id="view-{{ $travel->id }}">View</a>
             @can('isEditor')
                 <a href="{{ route('travels.edit', ['slug' => $travel->slug]) }}" id="edit-{{ $travel->id }}">Edit</a>
