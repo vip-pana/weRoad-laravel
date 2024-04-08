@@ -23,6 +23,9 @@
   - [Frontend](#frontend)
   - [Tests](#tests)
   - [Other](#other)
+    - [Other features/improvements to do](#other-featuresimprovements-to-do)
+      - [Must](#must)
+      - [Cool things to do](#cool-things-to-do)
 
 
 ### Requirements
@@ -142,3 +145,19 @@ The tests cover the functionality of:
 ## Other
 - The project uses **Pint** as the linter, to run it just use the command `./vendor/bin/pint`.
 - The project use **Larastan** as static code analysis tool with level 5. To run it just use the command `./vendor/bin/phpstan analyse`
+
+***
+### Other features/improvements to do
+#### Must
+- [ ] Tests: Resolve problems with assertSee tests with authorization
+- [ ] Update README.MD: add "how i worked" and "what could be done better" parts
+- [ ] Update README.MD: use gif(s) of the application in running
+- [ ] Validation: Move validations from controller to the model file
+- [ ] Ensure the readme is in a correct english
+
+#### Cool things to do
+- [ ] Use GithubA Actions: run pint and tests
+- [ ] Elevate Larastan level for more security
+- [ ] Dockerize the application
+- [ ] Create a vue interface
+- [ ] Refactor the code following the best practices
