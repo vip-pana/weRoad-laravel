@@ -14,9 +14,8 @@
                             @php
                                 $lowestPriceTour = $tours->min('price');
                                 $lowestPriceTour = intval($lowestPriceTour / 100);
-                                $formattedPrice = number_format($lowestPriceTour, -4, ',', '.');
                             @endphp
-                            Starting by: {{ $formattedPrice }} €
+                            Starting by: {{ $lowestPriceTour }} €
                         @else
                             <span class="bg-red-500 rounded px-6 py-2 text-white self-start">
                                 No tours are available.

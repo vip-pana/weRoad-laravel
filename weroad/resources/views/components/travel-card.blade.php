@@ -13,17 +13,15 @@
 
                 $maxPriceTour = $travel->tours->max('price');
                 $maxPriceTour = intval($maxPriceTour / 100);
-                $formattedMaxPrice = number_format($maxPriceTour, -4, ',', '.');
 
                 $lowestPriceTour = $travel->tours->min('price');
                 $lowestPriceTour = intval($lowestPriceTour / 100);
-                $formattedLowestPrice = number_format($lowestPriceTour, -4, ',', '.');
             @endphp
             @if (count($travel->tours) != 0)
                 <p>Next Tour: {{ \Carbon\Carbon::parse($oldestStartingDate)->format('m/d/Y') }}</p>
                 <p>Last Tour: {{ \Carbon\Carbon::parse($newestStartingDate)->format('m/d/Y') }}</p>
-                <p>Starting from: {{ $formattedLowestPrice }}€</p>
-                <p>Max price: {{ $formattedMaxPrice }}€</p>
+                <p>Starting from: {{ $lowestPriceTour }}€</p>
+                <p>Max price: {{ $maxPriceTour }}€</p>
             @else
                 No tours available
             @endif

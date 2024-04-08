@@ -18,7 +18,7 @@
                     {{ \Carbon\Carbon::parse($tour->endingDate)->format('m/d/Y') }}
                 </td>
                 <td class="border text-center">
-                    {{ number_format(intval($tour->price / 100), -4, ',', '.') }} €
+                    {{ intval($tour->price / 100) }} €
                 </td>
                 @can('isAdmin')
                     <td>
