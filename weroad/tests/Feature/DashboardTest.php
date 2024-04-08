@@ -55,4 +55,3 @@ test('admin user can see logout form and can not see login link', function () {
 });
 
 test('unauthenticated user can see login link and can not see logout form')->get('/')->assertStatus(200)->assertSee('login-link')->assertDontSee('logout-form');
-

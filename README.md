@@ -35,9 +35,13 @@
 ## Installation
 
 1. Clone the repository and open the repository on your IDE
-2. Run `composer install` to install the necessary dependencies
-3. Run `php artisan migrate --seed` to populate the database with mock data.
-4. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
+2. With terminal, move on `/weRoad`
+3. Run `composer install` to install the necessary dependencies
+4. Run `npm run build` to make the build of the project
+5. Run `php artisan migrate --seed` to populate the database with mock data.
+6. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
+
+ps. If you have problem on build or serve, delete the node_modules and package-lock.json and rerun npm install
 ### Packages
 
 - **Laravel Breeze**: For authentication
@@ -145,20 +149,3 @@ The tests cover the functionality of:
 ## Other
 - The project uses **Pint** as the linter, to run it just use the command `./vendor/bin/pint`.
 - The project use **Larastan** as static code analysis tool with level 5. To run it just use the command `./vendor/bin/phpstan analyse`
-
-***
-### Other features/improvements to do
-#### Must
-- [ ] Structure: Move the content of weRoad folder out of the folder
-- [ ] Tests: Resolve problems with assertSee tests with authorization
-- [ ] Update README.MD: add "how i worked" and "what could be done better" parts
-- [ ] Update README.MD: use gif(s) of the application in running
-- [ ] Validation: Move validations from controller to the model file
-- [ ] Ensure the readme is in a correct english
-
-#### Cool things to do
-- [ ] Use Github Actions: run pint and tests
-- [ ] Elevate Larastan level for more security
-- [ ] Dockerize the application
-- [ ] Create a vue interface
-- [ ] Refactor the code following the best practices
