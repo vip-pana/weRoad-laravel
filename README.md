@@ -157,7 +157,7 @@ The tests cover the functionality of:
 - [ ] Ensure the readme is in a correct english
 
 #### Cool things to do
-- [ ] Use GithubA Actions: run pint and tests
+- [ ] Use Github Actions: run pint and tests
 - [ ] Elevate Larastan level for more security
 - [ ] Dockerize the application
 - [ ] Create a vue interface
