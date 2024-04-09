@@ -38,7 +38,7 @@ class TourController extends Controller
     {
         return $request->validate([
             'name' => 'required',
-            'startingDate' => ['required', 'date', 'after_or_equal:today'],
+            'startingDate' => ['required', 'date'],
             'endingDate' => [
                 'required',  'date', 'after:startingDate',
                 function ($attribute, $value, $fail) use ($request, $travel) {
