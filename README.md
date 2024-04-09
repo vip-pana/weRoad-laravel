@@ -1,4 +1,9 @@
 # weRoad-laravel
+The project is a demo platform that allows users to view related trips and tours. Implements an authentication system with two roles: Admin and Editor. Users have access to specific features based on their assigned role.
+The project have over than 60 tests and uses Lint and Static Analysis tools.
+
+![alt text](media/DEMO.gif)
+
 
 ## Index 
 - [weRoad-laravel](#weroad-laravel)
@@ -23,9 +28,6 @@
   - [Frontend](#frontend)
   - [Tests](#tests)
   - [Other](#other)
-    - [Other features/improvements to do](#other-featuresimprovements-to-do)
-      - [Must](#must)
-      - [Cool things to do](#cool-things-to-do)
 
 
 ### Requirements
@@ -138,6 +140,7 @@ The frontend is Blade based with views split into folders per domain, using comp
 ## Tests
 The tests are built using **Pest**, a PHP framework for unit testing.
 Most of the tests are of the Feature type which deal with testing the functioning of the app's features.
+
 To run the tests use the `php artisan test` command and all the tests will be executed completely.
 
 The tests cover the functionality of:
