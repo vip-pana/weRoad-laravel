@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  php:
+    container_name: weroad_php
+    build: php-fpm
+    volumes:
+      - ../weroad:/var/www/app:cached
+    ports:
+      - '9004:9000'
+
+  nginx:
+    container_name: weroad_nginx
+    build: nginx
+    ports:
+      - '8881:80'
+    depends_on:
+      - php
+    volumes_from:
+      - php
+
+  libraries:
+    container_name: weroad_libs
+    build: php-fpm
+    volumes:
+      - ../weroad:/var/www/app
+    command: [ "su" ,"-", "www-data", "-s", "/bin/bash", "-c", "cd /var/www/app && composer install -vvv && npm ci --loglevel=verbose && npm run build && php artisan migrate --seed" ]
