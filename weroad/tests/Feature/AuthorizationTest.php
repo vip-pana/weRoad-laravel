@@ -14,7 +14,7 @@ beforeEach(function () {
     $this->mockTravel = [
         'name' => 'Lorem Ipsum',
         'description' => 'Dolor sit amet',
-        'numberOfDays' => rand(0, 100),
+        'numberOfDays' => 5,
         'nature' => rand(0, 100),
         'relax' => rand(0, 100),
         'history' => rand(0, 100),
@@ -24,20 +24,20 @@ beforeEach(function () {
     $this->mockTour = [
         'name' => 'Lorem Ipsum',
         'startingDate' => '2030-01-01',
-        'endingDate' => '2030-01-02',
-        'price' => '12345',
+        'endingDate' => '2030-01-06',
+        'price' => 12345,
     ];
 
     $this->updatedMockTour = [
         'name' => 'Dolor sit amet',
         'startingDate' => '2031-01-01',
-        'endingDate' => '2031-01-02',
-        'price' => '123456789',
+        'endingDate' => '2031-01-06',
+        'price' => 123456,
     ];
     $this->updateMockTravel = [
         'name' => 'Lorem Ipsum Dolor sit amet',
         'description' => 'New simple description',
-        'numberOfDays' => rand(0, 100),
+        'numberOfDays' => 5,
         'nature' => rand(0, 100),
         'relax' => rand(0, 100),
         'history' => rand(0, 100),
@@ -118,8 +118,9 @@ test('editor user can not invoke the POST travel.store method and will be unauth
 });
 
 test('admin user can invoke the POST tours.store method and will be redirect to travel.show', function () {
-    $this->actingAs($this->adminUser)
+    $this->actingAs($this->adminUser)->from('/travels/'.$this->travel->slug.'/tours/create')
         ->post('/travels/'.$this->travel->id.'/tours', $this->mockTour)
+        ->assertValid(['name', 'startingDate', 'endingDate', 'price'])
         ->assertStatus(302)->assertRedirect('/travels/'.$this->travel->slug);
 });
 
@@ -157,8 +158,10 @@ test('editor user can not invoke the DELETE travels.destory method and will be u
 test('admin user can invoke the PUT tours.update method and will be redirect to travels.show', function () {
     $tour = $this->travel->tours[0];
 
-    $this->actingAs($this->adminUser)->put('/tours/'.$tour->id, $this->updatedMockTour)
-        ->assertStatus(302)->assertRedirect('/travels/'.$this->travel->slug);
+    $this->actingAs($this->adminUser)->from('/tours/'.$tour->id.'/edit')->put('/tours/'.$tour->id, $this->updatedMockTour)
+        ->assertStatus(302)
+        ->assertValid(['name', 'startingDate', 'endingDate', 'price'])
+        ->assertRedirect('/travels/'.$this->travel->slug);
 });
 
 test('editor user can not invoke the PUT tours.update method and will receive 403', function () {

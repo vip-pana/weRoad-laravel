@@ -24,7 +24,7 @@ class TravelFactory extends Factory
             'name' => $name,
             'slug' => $slug,
             'description' => fake()->paragraph(),
-            'numberOfDays' => rand(0, 15),
+            'numberOfDays' => 5,
             'isPublic' => fake()->boolean(),
             'moods' => json_encode([
                 'nature' => rand(0, 100),
