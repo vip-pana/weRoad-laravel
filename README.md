@@ -39,9 +39,11 @@ The project have over than 60 tests and uses Lint and Static Analysis tools.
 1. Clone the repository and open the repository on your IDE
 2. With terminal, move on `/weRoad`
 3. Run `composer install` to install the necessary dependencies
-4. Run `npm run build` to make the build of the project
-5. Run `php artisan migrate --seed` to populate the database with mock data.
-6. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
+4. Run `npm install` to install node_modules dependencies
+5. Run `npm run build` to make the build of the project
+6. Run `php artisan migrate --seed` to populate the database with mock data.
+   - The cmd will ask you to create a database. respond yes 
+7. Run `php artisan serve` to  start the application on port 8000. Then open your browser on http://localhost:8000  
 
 ps. If you have problem on build or serve, delete the node_modules and package-lock.json and rerun npm install
 ### Packages
