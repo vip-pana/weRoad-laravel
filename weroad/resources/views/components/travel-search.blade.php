@@ -22,8 +22,8 @@
                     <label for="orderBy">Order by:</label>
                     <select name="orderBy">
                         <option value="">Order by price</option>
-                        <option value="ASC">Lower to highest</option>
-                        <option value="DESC">Highest to lower</option>
+                        <option value="ASC">Lower to higher</option>
+                        <option value="DESC">Higher to lower</option>
                     </select>
                 </div>
             </div>
