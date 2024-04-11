@@ -1,6 +1,6 @@
 # weRoad-laravel
 The project is a demo platform that allows users to view related trips and tours. Implements an authentication system with two roles: Admin and Editor. Users have access to specific features based on their assigned role.
-The project have over than 60 tests and uses Lint and Static Analysis tools.
+The project have over than 70 tests and have over 120 assertions and uses Lint and Static Analysis tools.
 
 ![alt text](media/DEMO.gif)
 
