@@ -142,6 +142,7 @@ The frontend is Blade based with views split into folders per domain, using comp
 ## Tests
 The tests are built using **Pest**, a PHP framework for unit testing.
 Most of the tests are of the Feature type which deal with testing the functioning of the app's features.
+I preferred not to add unit tests, given the simplicity of the application and the practically absence of external methods to those already called by the controller (which are previous tested by feature tests).
 
 To run the tests use the `php artisan test` command and all the tests will be executed completely.
 
